@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+	<head>
+		<title>munit.js example</title>
+		<script type="text/javascript" src="munit.js"></script>
+	</head>
+	<body>
+		<h1>Simple <a href="http://github.com/sole/munit.js">munit.js</a> example</h1>
+		<p>microunit testing for javascript</p>
+
+		<script src="https://gist.github.com/2820890.js?file=gistfile1.js"></script>
+		
+		<script type="text/javascript">
+			var Car = function() {
+				this.beep = function() {
+					return 'beep';
+				}
+
+				this.honk = function() {
+					return 'honk';
+				}
+
+				return this;
+			},
+			
+			car = new Car();
+
+			var carTest = new MUNIT.Test([
+				function beepDoesBeep() {
+					this.assertTrue(car.beep() == 'beep');
+				},
+				function beepDoesntBark() {
+					this.assertTrue(car.beep() == 'woof');
+				},
+				function aHonkIsAHonkIsAHonk() {
+					this.assertEquals(car.honk(), 'honk');
+				}
+			]);
+
+			var results = carTest.runTests();
+
+			document.body.appendChild(MUNIT.prettyFormat(results));
+
+		</script>
+		<style type="text/css">
+			th { text-align: left; }
+			td { padding: 8px; }
+			.boo { background: #faa; }
+			.yay { background: #8f8; }
+		</style>
+	</body>
+</html>
