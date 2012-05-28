@@ -7,7 +7,7 @@ munit.js
 
 * Include [munit.js](https://github.com/sole/munit.js/blob/master/munit.js) in an html file,
 * create a MUNIT.Test passing in an array of tests, 
-* runTests()
+* runTests() -- if your test doesn't throw an exception, YAY! else BOO!
 * format the results as you prefer, or ```MUNIT.prettyFormat``` them
 * profit!
 
