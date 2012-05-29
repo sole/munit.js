@@ -15,6 +15,7 @@ munit.js
 or:
 
 * have a look at the [example.html](https://github.com/sole/munit.js/blob/master/example.html) file -- [online](http://sole.github.com/munit.js/example.html)
+* or have a look at the [advanced example](https://github.com/sole/munit.js/blob/master/advanced_example.html) -- [online](http://sole.github.com/munit.js/advanced_example.html)
 
 ### author ###
 
