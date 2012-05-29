@@ -29,14 +29,14 @@
 				function beepDoesBeep() {
 					this.assertTrue(car.beep() == 'beep');
 				},
-				function beepDoesntBark() {
+				function wrongAssertionAsCarsDontBark() {
 					this.assertTrue(car.beep() == 'woof');
 				},
 				function aHonkIsAHonkIsAHonk() {
 					this.assertEquals(car.honk(), 'honk');
 				}
 			]);
-
+			
 			var results = carTest.runTests();
 
 			document.body.appendChild(MUNIT.prettyFormat(results));

@@ -1,7 +1,7 @@
 // munit.js // microunit testing for javascript //
 // http://github.com/sole/munit.js
 var MUNIT = MUNIT || {
-	VERSION : 1,
+	VERSION : 2,
 	RESULT_YAY: 'yay',
 	RESULT_BOO: 'boo',
 
@@ -62,7 +62,10 @@ MUNIT.Test = function(tests) {
 		}
 	}
 
-	this.runTests = function() {
+	this.onSetup = function() {}
+	this.onTearDown = function() {}
+
+	this.runTests = function(params) {
 		var munitTest = this,
 			results = tests.map(function(test) {
 
@@ -70,7 +73,9 @@ MUNIT.Test = function(tests) {
 				message = '';
 			
 			try {
+				munitTest.onSetup();
 				test.call(munitTest);
+				munitTest.onTearDown();
 				result = MUNIT.RESULT_YAY;
 			} catch(e) {
 				message = e.message;

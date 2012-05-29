@@ -6,7 +6,8 @@ munit.js
 ### how to ###
 
 * Include [munit.js](https://github.com/sole/munit.js/blob/master/munit.js) in an html file,
-* create a MUNIT.Test passing in an array of tests, 
+* create a MUNIT.Test passing in an array of tests,
+* optionally assign onSetup and onTearDown functions (they'll be executed before and after each test)
 * runTests() -- if your test doesn't throw an exception, YAY! else BOO!
 * format the results as you prefer, or ```MUNIT.prettyFormat``` them
 * profit!

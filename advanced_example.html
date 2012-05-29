@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<title>advanced munit.js example with setup and teardown</title>
+		<script type="text/javascript" src="munit.js"></script>
+	</head>
+	<body>
+		<h1>advanced <a href="http://github.com/sole/munit.js">munit.js</a> example with setup and teardown</h1>
+		<p>microunit testing for javascript</p>
+
+		<script src="https://gist.github.com/2828389.js?file=munit_advanced.js"></script>
+		
+		<script type="text/javascript">
+var array;
+
+var arrayTest = new MUNIT.Test([
+	function lengthZeroWhenEmpty() {
+		this.assertEquals(0, array.length);
+	},
+	function lengthNotZeroIfNotEmpty() {
+		array.push(1);
+		this.assertTrue(array.length != 0);
+	},
+	function arrayIsRecreatedAfterEachTest() {
+		this.assertEquals(0, array.length);
+	}
+]);
+
+arrayTest.onSetup = function() {
+	array = [];
+}
+
+arrayTest.onTearDown = function() {
+	// Not that we really *need* to do anything here
+	// but just to show you it can be done:
+	array = null;
+}
+
+var results = arrayTest.runTests();
+
+document.body.appendChild(MUNIT.prettyFormat(results));
+
+		</script>
+		<style type="text/css">
+			th { text-align: left; }
+			td { padding: 8px; }
+			.boo { background: #faa; }
+			.yay { background: #8f8; }
+		</style>
+	</body>
+</html>
