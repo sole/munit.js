@@ -20,3 +20,7 @@ or:
 ### author ###
 
 [Soledad Penadés](http://soledadpenades.com)
+
+### about ###
+
+[Why](http://soledadpenades.com/2012/05/28/munit-js-microunit-testing-for-javascript/).
