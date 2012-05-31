@@ -6,38 +6,24 @@ var MUNIT = MUNIT || {
 	RESULT_BOO: 'boo',
 
 	prettyFormat: function(testResults) {
-		var table = document.createElement('table'),
-			trHead = document.createElement('tr');
+		var resultElement = document.createElement('div'),
+			th = '',
+			tr = '';
 
 		['result', 'test', 'message'].forEach(function(text) {
-			var th = document.createElement('th');
-			th.appendChild(document.createTextNode(text));
-			trHead.appendChild(th);
+			th += '<th>' + text + '</th>';
 		});
-
-		table.appendChild(trHead);
 
 		testResults.forEach(function(result) {
-			var tr = document.createElement('tr');
-			tr.className = (result.result === MUNIT.RESULT_YAY ? 'yay' : 'boo');
-
-			var tdResult = document.createElement('td');
-						tdResult.appendChild(document.createTextNode(result.result));
-			tr.appendChild(tdResult);
-
-			var tdTest = document.createElement('td');
-			tdTest.appendChild(document.createTextNode(result.test));
-			tr.appendChild(tdTest);
-
-			var tdMessage = document.createElement('td');
-			tdMessage.appendChild(document.createTextNode(result.message));
-			tr.appendChild(tdMessage);
-			tr.title = result.testCode;
-
-			table.appendChild(tr);
+			tr += '<tr class="' + result.result + '" title="' + result.testCode + '">'
+				+ '<td>' + result.result + '</td>'
+				+ '<td>' + result.test + '</td>'
+				+ '<td>' + result.message + '</td>'
+				+ '</tr>';
 		});
 
-		return table;
+		resultElement.innerHTML = '<table><thead><tr>' + th + '</tr></thead><tbody>' + tr + '</tbody></table>';
+		return resultElement.childNodes;
 	}
 };
 
@@ -70,7 +56,7 @@ MUNIT.Test = function(tests) {
 
 			var result = MUNIT.RESULT_BOO,
 				message = '';
-			
+
 			try {
 				munitTest.onSetup();
 				test.call(munitTest);
@@ -84,7 +70,7 @@ MUNIT.Test = function(tests) {
 				test: test.name,
 				result: result,
 				message: message,
-				testCode: test.toString() 
+				testCode: test.toString()
 			});
 		});
 
