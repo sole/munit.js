@@ -1,29 +1,29 @@
 // munit.js // microunit testing for javascript //
 // http://github.com/sole/munit.js
 var MUNIT = MUNIT || {
-	VERSION : 2,
+	VERSION : 3,
 	RESULT_YAY: 'yay',
 	RESULT_BOO: 'boo',
 
 	prettyFormat: function(testResults) {
-		var resultElement = document.createElement('div'),
+		var div = document.createElement('div'),
 			th = '',
-			tr = '';
+			rows = '';
 
 		['result', 'test', 'message'].forEach(function(text) {
 			th += '<th>' + text + '</th>';
 		});
 
 		testResults.forEach(function(result) {
-			tr += '<tr class="' + result.result + '" title="' + result.testCode + '">'
+			rows += '<tr class="' + result.result + '" title="' + result.testCode + '">'
 				+ '<td>' + result.result + '</td>'
 				+ '<td>' + result.test + '</td>'
 				+ '<td>' + result.message + '</td>'
 				+ '</tr>';
 		});
 
-		resultElement.innerHTML = '<table><thead><tr>' + th + '</tr></thead><tbody>' + tr + '</tbody></table>';
-		return resultElement.childNodes;
+		div.innerHTML = '<table><thead><tr>' + th + '</tr></thead><tbody>' + rows + '</tbody></table>';
+		return div;
 	}
 };
 
