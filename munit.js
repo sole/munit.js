@@ -47,10 +47,9 @@ MUNIT.AssertException = function(message) {
 
 MUNIT.Test = function(tests) {
 
-	var tests = tests || [];
+	tests = tests || [];
 
 	this.assertTrue = function(value) {
-
 		if(value !== true) {
 			throw new MUNIT.AssertException('Expected true, got ' + value);
 		}
